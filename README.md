@@ -17,11 +17,15 @@ We follow the below process: <br>
 :notebook:  Horizontally scalable.<br>
 :notebook:  Enhanced security<br>
 
+## Motivation of the project
+A music streaming startup called Sparkify, has grown their user base and song database and want to move their processes and data onto the cloud. For the advantages mentioned above, they choose Amazon Redshift as their cloud datawarehousing tool. Their data resides in S3, in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app. Hence the project asks to build an ETL pipeline to fetch the data from s3 buckets, loads them in staging tables and then to the respective fact and dimension tables. We will describe the data modelling design structure next.
+
 ## Data Modelling with Redshift
 Below is the table definition of Staging Tables: <br>
 ![staging tables](img/staging_tables.png)
 
-Below is the table definitions of Fact and Dimension Tables: <br>
+Below is the table definitions of Fact and Dimension Tables. <br>
+The users and songs table seems to be most important and they might be most often used in queries, hence we used the distribution style to ALL for these two tables. Withing that, we have used user_id and song_id as sortkey since we may want to already sort the data in these tables based on ids. We further used start_time as sortkey for the time table and artist_id attribute of the artist table as distkey since we want to distribute the data in artists according to the artist_id as key. This may facilitate the queries where we want to get the rows based on artist_id.
 ![fact and dimension tables](img/factdimension.png)
 
 ## Getting Started
