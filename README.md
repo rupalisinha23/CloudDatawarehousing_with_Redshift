@@ -25,7 +25,7 @@ Below is the table definition of Staging Tables: <br>
 ![staging tables](img/staging_tables.png)
 
 Below is the table definitions of Fact and Dimension Tables. <br>
-The users and songs table seems to be most important and they might be most often used in queries, hence we used the distribution style to ALL for these two tables. Withing that, we have used user_id and song_id as sortkey since we may want to already sort the data in these tables based on ids. We further used start_time as sortkey for the time table and artist_id attribute of the artist table as distkey since we want to distribute the data in artists according to the artist_id as key. This may facilitate the queries where we want to get the rows based on artist_id.
+The <i>users</i> and <i>songs</i> table seems to be most important and they might be most often used in queries, hence we used the distribution style to ALL for these two tables. Within that, we have used <i>user_id</i> and <i>song_id</i> as sortkey since we may want to already sort the data in these tables based on ids. We further used <i>start_time</i> as sortkey for the time table and <i>artist_id</i> attribute of the artist table as distkey since we want to distribute the data in artists according to the <i>artist_id</i> as key. This may facilitate the queries where we want to get the rows based on <i>artist_id</i>.
 ![fact and dimension tables](img/factdimension.png)
 
 ## Getting Started
